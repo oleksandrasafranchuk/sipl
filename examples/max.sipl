@@ -1,0 +1,3 @@
+begin
+  if X > Y then Z := X else Z := Y
+end

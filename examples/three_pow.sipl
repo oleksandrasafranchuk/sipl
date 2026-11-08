@@ -1,0 +1,8 @@
+begin
+  P := 1;
+  while X > 0 do
+  begin
+    P := P * 3;
+    X := X - 1
+  end
+end

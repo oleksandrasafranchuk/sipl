@@ -1,0 +1,5 @@
+begin
+  X := A + B * C;
+  Y := A - B - C;
+  if ¬X=Y ∨ X>0 then Z := 1 else Z := 0; skip
+end

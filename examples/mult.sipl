@@ -1,0 +1,9 @@
+begin
+  Z := 0;
+  K := Y;
+  while K > 0 do
+  begin
+    Z := Z + X;
+    K := K - 1
+  end
+end

@@ -1,0 +1,9 @@
+begin
+  K := N;
+  E := 1;
+  while K > 0 do
+  begin
+    K := K - 1;
+    E := 1 - E
+  end
+end

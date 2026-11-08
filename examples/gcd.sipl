@@ -1,0 +1,4 @@
+begin
+  while ¬M=N do
+    if M>N then M:=M–N else N:=N–M
+end
