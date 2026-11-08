@@ -1,0 +1,28 @@
+
+name: Release
+on:
+  push:
+    tags: ["v*.*.*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get install -y graphviz
+      - run: pip install build pytest && pip install -e .
+      - run: pytest -q
+      - name: Check version matches tag
+        run: |
+          test "v$(python -c 'import sipl; print(sipl.__version__)')" = "${GITHUB_REF_NAME}"
+      - run: python -m build
+      - name: Release notes from CHANGELOG
+        run: awk -v v="${GITHUB_REF_NAME#v}" '/^## \[/{p=index($0, "[" v "]")>0; next} p' CHANGELOG.md > notes.md
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/* --title "SIPL Toolkit $GITHUB_REF_NAME" --notes-file notes.md
