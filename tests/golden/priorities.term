@@ -1,0 +1,1 @@
+AS^X(S²(add, A⇒, S²(mult, B⇒, C⇒))) • AS^Y(S²(sub, S²(sub, A⇒, B⇒), C⇒)) • IF(S²(or, S¹(neg, S²(eq, X⇒, Y⇒)), S²(gr, X⇒, 0̅)), AS^Z(1̅), AS^Z(0̅)) • id
